@@ -1,16 +1,14 @@
-let container = document.querySelector('.container')
-container.classList.add('container')
+let sketchPad = document.querySelector('.container')
 
-let createGrid = function() {
-    let size = prompt("What size would you like?", "Enter a number between 2 and 100")
-    container.innerHTML = '';
 
-    for (let i = 0; i < size; i++) {
-        let square = document.createElement('div');
-        square.classList.add('cell');
-        square.innerText = ('test')
-        container.appendChild(square);
+let createGrid = function(size) {
+    // let size = prompt("What size grid would you like?", "Enter a number between 2 and 100")
+    sketchPad.innerHTML = '';
+
+    for (let i = 0; i < size * size; i++) {
+        let cell = document.createElement('div');
+        sketchPad.appendChild(cell);
     }
 }
 
-createGrid();
+createGrid(32);
