@@ -1,40 +1,63 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(0, 10, 10, 0.897);
-    font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 10, 10, 0.897);
+  font-family: sans-serif;
 }
 
-
 h1 {
-    color: white;
-    margin-top: 30px;
+  color: white;
+  margin-top: 30px;
 }
 
 .container {
-    width: 400px;
-    height: 400px;
-    margin: 20px;
-    background-color: white;
-    display: flex;
-    flex-flow: row wrap;
+  width: 400px;
+  height: 400px;
+  margin: 20px;
+  background-color: white;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .container div {
-    box-sizing: border-box;
-    border: 1px solid gray;
-    /* set default cell values */
-    width: calc(100% / 4);
-    height: calc(100% / 4)
+  box-sizing: border-box;
+  border: 1px solid gray;
+  /* set default cell values */
+  width: calc(100% / 4);
+  height: calc(100% / 4);
 }
 
 .cell {
-    border: 1px dotted black;
-    box-sizing: border-box;
+  border: 1px dotted black;
+  box-sizing: border-box;
 }
 
 .buttons {
-    padding: 20px;
-    align-items: center;
+  padding: 20px;
+  align-items: center;
+}
+
+.btn {
+  background-size: 100% 100%;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* change color of rainbow button when active */
+.rainbowOn {
+  background-image: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
 }
