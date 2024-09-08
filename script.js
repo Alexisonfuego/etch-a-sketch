@@ -45,14 +45,16 @@ function clearGrid() {
     });
 }
 
-// add mouseover event listener to cells using event delegation
-sketchPad.addEventListener('mouseover', (event) => {
-    if (event.target.matches('.cell')) {
+// change color of cells on mouseover when lmb is pressed
+sketchPad.addEventListener('mousemove', (event) => {
+    if (event.buttons === 1 && event.target.matches('.cell')) {
         const cell = event.target;
-        if (cell.classList.contains('rainbow')) {
+        if (cell.classList.contains('rainbow') && !cell.getAttribute('data-color-changed')) {
             cell.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-        } else {
+            cell.setAttribute('data-color-changed', 'true');
+        } else if (!cell.classList.contains('rainbow')) {
             cell.style.backgroundColor = 'black';
+            cell.removeAttribute('data-color-changed');
         }
     }
 });
