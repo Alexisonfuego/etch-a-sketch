@@ -3,28 +3,25 @@ let colorMode = document.querySelector('.toggleColor')
 let setGridSize = document.querySelector('.setGridSize')
 let clear = document.querySelector('.clearGrid')
 
-// set default grid size
+// set default grid
 let defaultSize = 12;
 for (let i = 0; i < defaultSize * defaultSize; i++) {
     let cell = document.createElement('div');
     cell.classList.add('cell');
-    // set size of cells based on default size
     cell.style.width = `calc(100% / ${defaultSize})`;
     cell.style.height = `calc(100% / ${defaultSize})`;
     sketchPad.appendChild(cell);
 }
     
-// set size of cells based on user input
+// set size of grid based on user input
 let createGrid = function() {
     let size = prompt("What size grid would you like?", "Enter a number between 2 and 100")
-
     //check if user input is valid
     if (size < 2 || size > 100 || isNaN(size)) {
         alert("Please enter a number between 2 and 100");
         return
     }   
-
-    // clear previous grid if input is valid
+    // clear previous grid only if input is valid
     sketchPad.replaceChildren();
 
     for (let i = 0; i < size * size; i++) {
@@ -38,8 +35,6 @@ let createGrid = function() {
             cell.classList.toggle('rainbow');
         }   
     }
-
-   
 }
 
 // clear sketchPad
@@ -65,12 +60,11 @@ sketchPad.addEventListener('mouseover', (event) => {
 // activate rainbow mode
 function toggleColor() {
     let cell = document.querySelectorAll('.cell');
-    let toggleColorButton = document.querySelector('.toggleColor');
     cell.forEach((cell) => {
         cell.classList.toggle('rainbow');
     });
     // toggle rainbow button color
-    toggleColorButton.classList.toggle('rainbowOn')
+    colorMode.classList.toggle('rainbowOn')
 }
 
 setGridSize.addEventListener('click', createGrid);
