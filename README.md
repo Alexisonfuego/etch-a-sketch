@@ -4,7 +4,7 @@ Also experimenting using Codium for assistance within VS Code.
 
 ## To Do:
 
-- Rainbow toggle button doesn't revert to plain background when grid size is reset
+- ~~Rainbow toggle button doesn't revert to plain background when grid size is reset~~
 - Replace prompt with input field
-- Replace addEventListener function with event delegation
+- ~~Replace addEventListener function with event delegation~~
 - ~~If grid size input isn't valid, initial grid disappears~~
