@@ -52,7 +52,7 @@ function clearGrid() {
 
 // add mouseover event listener to cells using event delegation
 sketchPad.addEventListener('mouseover', (event) => {
-    if (event.target.classList.contains('cell')) {
+    if (event.target.matches('.cell')) {
         const cell = event.target;
         if (cell.classList.contains('rainbow')) {
             cell.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
