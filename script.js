@@ -12,31 +12,34 @@ for (let i = 0; i < defaultSize * defaultSize; i++) {
     cell.style.width = `calc(100% / ${defaultSize})`;
     cell.style.height = `calc(100% / ${defaultSize})`;
     sketchPad.appendChild(cell);
-
-    addEventListener();
 }
     
 // set size of cells based on user input
 let createGrid = function() {
     let size = prompt("What size grid would you like?", "Enter a number between 2 and 100")
-    //erase previous grid
-    sketchPad.replaceChildren();
 
     //check if user input is valid
     if (size < 2 || size > 100 || isNaN(size)) {
         alert("Please enter a number between 2 and 100");
         return
     }   
-    
+
+    // clear previous grid if input is valid
+    sketchPad.replaceChildren();
+
     for (let i = 0; i < size * size; i++) {
         let cell = document.createElement('div');
         cell.classList.add('cell');
         cell.style.width = `calc(100% / ${size})`;
         cell.style.height = `calc(100% / ${size})`;
         sketchPad.appendChild(cell);
+        // add rainbow class if mode is selected
+        if (colorMode.classList.contains('rainbowOn')) {
+            cell.classList.toggle('rainbow');
+        }   
     }
 
-    addEventListener();
+   
 }
 
 // clear sketchPad
@@ -47,19 +50,17 @@ function clearGrid() {
     });
 }
 
-// add mouseover event listener to cells
-function addEventListener() {
-    let cell = document.querySelectorAll('.cell');
-    cell.forEach((cell) => {
-        cell.addEventListener('mouseover', () => {
-            if (cell.classList.contains('rainbow')) {
-                cell.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            } else {
-                cell.style.backgroundColor = 'black';
-            }
-        });
-    });
-}
+// add mouseover event listener to cells using event delegation
+sketchPad.addEventListener('mouseover', (event) => {
+    if (event.target.classList.contains('cell')) {
+        const cell = event.target;
+        if (cell.classList.contains('rainbow')) {
+            cell.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        } else {
+            cell.style.backgroundColor = 'black';
+        }
+    }
+});
 
 // activate rainbow mode
 function toggleColor() {
