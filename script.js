@@ -42,6 +42,7 @@ function clearGrid() {
     let cells = document.querySelectorAll('div');
     cells.forEach((cell) => {
         cell.style.backgroundColor = 'white';
+        cell.removeAttribute('data-color-changed');
     });
 }
 
